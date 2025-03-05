@@ -1,21 +1,63 @@
 # Enhanced Risk Stratification for Stage II Colorectal Cancer Using Deep Learning-based CT Classifier and Pathological Markers to Optimize Adjuvant Therapy Decision
 
-IRIS-CRC is a free, open-source risk stratification system designed to optimize adjuvant therapy decision-making for stage II colorectal cancer patients by integrating CT imaging features with established pathological markers.
-Developed at Guangdong Provincial People's Hospital by a research team led by Zaiyi Liu, who envisioned a tool that would enhance clinical decision-making by providing more precise risk stratification than conventional methods. Current IRIS-CRC development is led by Yanqi Huang, Xiaobo Chen and colleagues across multiple medical centers in China.
-IRIS-CRC provides AI-driven risk assessment using deep learning algorithms, as well as integration with pathological factors and intuitive result interpretation. In addition to these core functions, IRIS-CRC offers many supporting utilities. Some of the core capabilities of IRIS-CRC include:
+IRIS-CRC offers a more precise and personalized risk assessment than current guideline-based risk factors, potentially sparing low-risk patients from unnecessary adjuvant chemotherapy while identifying high-risk individuals for more aggressive treatment. This novel approach holds promise for improving clinical decision-making and outcomes in stage II CRC.
 
- - Multi-planar CT image analysis for comprehensive tumor assessment
- - Integration of established pathological risk factors (pT stage, NLNS, LVI, PNI)
- - Four-tier risk stratification with clear prognostic implications
- - User-friendly interface designed for clinical implementation
- - Support for DICOM format CT images
- - Robust validation across multiple centers with large patient dataset
+![figure_2.jpg](https://github.com/Chenxiaobo0828/STAR-CRC/blob/main/figure_2.jpg)
 
-## our software
+## Requirements
 
-Our software and Sample data can be downloaded from [Baidu Cloud](https://pan.baidu.com/s/17d6ps6V78RThzn0MKDb1dw?pwd=tkqt).
+- Python (3.9.12)
+- torch (2.2.2+cu118)
+## Usage
 
-![figure_1.jpg](https://github.com/Chenxiaobo0828/IRIS-CRC/blob/main/figure_1.jpg)
+1. Data Preparation
+	You need to prepare the following files:
+
+	- **Imaging files**: The format should be structured as follows:
+		```
+		Train_Cohort
+		├── Center I
+		  ├── Crop_AX_Smax+1_0001_image.nii.gz
+		  ├── Crop_AX_Smax+0_0001_image.nii.gz
+		  ├── Crop_AX_Smax-1_0001_image.nii.gz
+		  ├── Crop_AX_Smax+1_0002_image.nii.gz
+		  ...
+		├── Center II
+		├── Center III
+		└── Center IV
+		
+		Clinical.csv files
+		```
+		The file names must include the term "Smax", and should also contain one of the following: "Smax+0", "Smax+1", or "Smax-1".    
+
+	- **Clinical files**: These should include the following columns:
+		```
+	    - `image_paths`:.../Crop_AX_Smax+1_patient_id_image.nii.gz
+	    - `fustat`:0
+	    - `futime`:78
+	    ```		
+	
+2. Train:
+    
+     - **Install the PyTorch version with CUDA support.**
+    
+    ```
+     pip3 install torch==2.2.2+cu118 torchvision==0.17.2+cu118 torchaudio==2.2.2 -f https://download.pytorch.org/whl/cu118/torch_stable.html
+    ```
+    
+    - **Start training**:You can modify parameters such as epoch and seed in the `Train_II_CRC.py` file, and then run that file.
+    
+    ```
+    python Train_II_CRC.py
+    ```
+    
+3. Test:
+    
+    **Run test code**:   After downloading the weights, modify the weight path and prediction file path in the `Predict_II_CRC.py` file, and then run that file.
+    
+    ```
+    python Predict_II_CRC.py
+    ```
 
 ## Contact
 If you have any questions, feel free to contact us through email ([chenxb@gdph.org.cn](mailto:chenxb@gdph.org.cn)) or GitHub issues. 
