@@ -2,7 +2,7 @@
 
 IRIS-CRC offers a more precise and personalized risk assessment than current guideline-based risk factors, potentially sparing low-risk patients from unnecessary adjuvant chemotherapy while identifying high-risk individuals for more aggressive treatment. This novel approach holds promise for improving clinical decision-making and outcomes in stage II CRC.
 
-![figure_2.jpg](https://github.com/Chenxiaobo0828/STAR-CRC/blob/main/figure_2.jpg)
+![figure_2.jpg](https://github.com/Chenxiaobo0828/STAR-CRC/blob/main/figure_1.jpg)
 
 ## Requirements
 
